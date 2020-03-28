@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-header" style="text-align:center"><b>WEL COME TO CASECADDING DROP DOWN EXAMPLE</b></div>
+    <div class="card-body">
+        <form [formGroup]="FromStudent">
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    <label for="company">Student Name</label>
+                    <input type="text" class="form-control" formControlName="StudentName" id="company"
+                        placeholder="Enter Student Name">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="company">Country</label>
+                    <select class="form-control" formControlName="Country" [(ngModel)]="SelCountryId"
+                        (change)="FillStateDDL();">
+                        <option value="">--Select--</option>
+                        <option *ngFor="let Country of _allCountry | async" value={{Country.countryId}}>
+                            {{Country.countryName}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-3">
+
+                    <label for="company">State Name</label>
+                    <select class="form-control" formControlName="State">
+                        <option value="">--Select--</option>
+                        <option *ngFor="let State of _allState | async" value={{State.stateId}}>
+                            {{State.stateName}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
